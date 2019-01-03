@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Selectable.cs" />
     <Compile Include="Assets\Scripts\SelectedIcon.cs" />
     <Compile Include="Assets\Scripts\SelectedObject.cs" />
+    <Compile Include="Assets\Scripts\SelectorBox.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity Projects/SpaceRTS/SpaceRTS/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

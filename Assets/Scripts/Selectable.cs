@@ -16,6 +16,7 @@ public class Selectable : MonoBehaviour
         //Init
         isSelected = false;
         selectedIcon.enabled = false;
+        FindObjectOfType<SelectControls>().selectableObjs.Add(this.gameObject); //Add this the the list of selectable game objects
     }
 
     public bool OnClicked() //Is Toggle Button Held

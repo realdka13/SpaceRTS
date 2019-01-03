@@ -1,30 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Selectable : MonoBehaviour
 {
-    //Mats
-    [SerializeField]
-    private Material selectedMat;
-    [SerializeField]
-    private Material unselectedMat;
-
     //If Object is Selected Bool
-    [SerializeField]
     private bool isSelected = false;
 
-    //Mesh Renderer for changing colors
-    private MeshRenderer meshRend;
+    //Unit UI
+    public Image selectedIcon;
 
     private void Start()
     {
-        //Find Mesh Renderer
-        meshRend = GetComponent<MeshRenderer>();
-
-        //Initializing
-        meshRend.material = unselectedMat;
+        //Init
         isSelected = false;
+        selectedIcon.enabled = false;
     }
 
     public bool OnClicked() //Is Toggle Button Held
@@ -56,11 +47,11 @@ public class Selectable : MonoBehaviour
     {
         if (isSelected)
         {
-            meshRend.material = selectedMat;
+            selectedIcon.enabled = true;
         }
         else if (!isSelected)
         {
-            meshRend.material = unselectedMat;
+            selectedIcon.enabled = false;
         }
     }
 

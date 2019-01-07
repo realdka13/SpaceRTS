@@ -37,6 +37,10 @@ public class SelectControls : MonoBehaviour
     {
         IfLeftClicked();    //Check if left click happened
         ShouldClearSelection();
+        if (Input.GetMouseButtonDown(1)) //If Right Clicked, move the units that are selected
+        {
+            MoveUnits();
+        }
     }
 
     private void ShouldClearSelection()
@@ -159,5 +163,14 @@ public class SelectControls : MonoBehaviour
             obj.GetComponent<Selectable>().OnDeselect();
         }
         deSelectedObjects.Clear();
+    }
+
+    //Listen For Player Trying to Move Units
+    private void MoveUnits()
+    {
+        foreach (GameObject sel in selectedObjects)
+        {
+            sel.GetComponent<Movable>().ListenForMovementCommand();
+        }
     }
 }

@@ -234,6 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1173877575}
+  clickableLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!195 &1173877575
 NavMeshAgent:
   m_ObjectHideFlags: 0

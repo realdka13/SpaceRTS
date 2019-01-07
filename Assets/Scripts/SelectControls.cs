@@ -26,6 +26,9 @@ public class SelectControls : MonoBehaviour
     //Kep Track if object is selected
     private bool objectSelected = false;
 
+    //Location Marker
+    public GameObject locationMarker;
+
     private void Awake()
     {
         selectedObjects = new List<GameObject>();
@@ -168,6 +171,12 @@ public class SelectControls : MonoBehaviour
     //Listen For Player Trying to Move Units
     private void MoveUnits()
     {
+        //Draw Area Marker
+        if (selectedObjects.Count > 0)
+        {
+            locationMarker.GetComponent<LocationMarker>().SpawnMarker();
+        }
+
         foreach (GameObject sel in selectedObjects)
         {
             sel.GetComponent<Movable>().ListenForMovementCommand();

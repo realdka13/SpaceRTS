@@ -6,11 +6,14 @@ using UnityEngine;
 public class Movable : MonoBehaviour
 {
     [SerializeField]
-    public NavMeshAgent agent;
+    private NavMeshAgent agent;
+
+    [SerializeField]
+    private LayerMask clickableLayer;
 
     public void ListenForMovementCommand()
     {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, clickableLayer))
             {
                 agent.SetDestination(hit.point);
             }

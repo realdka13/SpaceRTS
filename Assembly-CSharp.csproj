@@ -64,18 +64,20 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
+    <Compile Include="Assets\Scripts\Buildings\CommandCenter.cs" />
     <Compile Include="Assets\Scripts\CameraControls.cs" />
-    <Compile Include="Assets\Scripts\Engineer.cs" />
-    <Compile Include="Assets\Scripts\FormationGrid.cs" />
-    <Compile Include="Assets\Scripts\LocationMarker.cs" />
-    <Compile Include="Assets\Scripts\Movable.cs" />
-    <Compile Include="Assets\Scripts\NavMeshManager.cs" />
-    <Compile Include="Assets\Scripts\Selectable.cs" />
-    <Compile Include="Assets\Scripts\SelectControls.cs" />
-    <Compile Include="Assets\Scripts\SelectedIcon.cs" />
-    <Compile Include="Assets\Scripts\SelectorBox.cs" />
-    <Compile Include="Assets\Scripts\UnitStats.cs" />
-    <Compile Include="Assets\Scripts\UnitStatsManager.cs" />
+    <Compile Include="Assets\Scripts\Movement\FormationGrid.cs" />
+    <Compile Include="Assets\Scripts\Movement\LocationMarker.cs" />
+    <Compile Include="Assets\Scripts\Movement\Movable.cs" />
+    <Compile Include="Assets\Scripts\Movement\NavMeshManager.cs" />
+    <Compile Include="Assets\Scripts\Selection\Selectable.cs" />
+    <Compile Include="Assets\Scripts\Selection\SelectControls.cs" />
+    <Compile Include="Assets\Scripts\Selection\SelectedIcon.cs" />
+    <Compile Include="Assets\Scripts\UI\SelectorBox.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Units\Engineer.cs" />
+    <Compile Include="Assets\Scripts\Units\UnitStats.cs" />
+    <Compile Include="Assets\Scripts\Units\UnitStatsManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity Projects/SpaceRTS/SpaceRTS/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

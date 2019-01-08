@@ -108,9 +108,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedObjects: []
   selectableObjs: []
-  clickableLayer:
+  selectableBuildings: []
+  clickableLayerUnits:
     serializedVersion: 2
     m_Bits: 512
+  clickableLayerBuildings:
+    serializedVersion: 2
+    m_Bits: 2048
   locationMarker: {fileID: 0}
   locationMarkerPrefab: {fileID: 7896085377236187570, guid: 4bb3c9237b2233e45969dc9660496310,
     type: 3}

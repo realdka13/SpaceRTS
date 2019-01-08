@@ -221,28 +221,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!1 &100580185 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5921872069640025736, guid: 6489fb86510e8d54cb0ed4a52e1ee77d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5921872069599808977}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &100580191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100580185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,6 +1026,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040335229371486161, guid: a4e4a2676934c5e41bb160a327f28033,
+        type: 3}
+      propertyPath: clickableLayerUnits.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040335229371486161, guid: a4e4a2676934c5e41bb160a327f28033,
+        type: 3}
+      propertyPath: clickableLayerBuildings.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4e4a2676934c5e41bb160a327f28033, type: 3}

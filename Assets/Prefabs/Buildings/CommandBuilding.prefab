@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5705587511165523854}
   - component: {fileID: 2904779636480900925}
   - component: {fileID: 4756550625146015487}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: SelectedIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,9 @@ GameObject:
   - component: {fileID: 5921872069640025738}
   - component: {fileID: 5921872069640025739}
   - component: {fileID: 5965543316829135163}
-  m_Layer: 0
+  - component: {fileID: 100580191}
+  - component: {fileID: 100580192}
+  m_Layer: 11
   m_Name: CommandBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,6 +221,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commandCenterUI: {fileID: 0}
+--- !u!114 &100580191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5921872069640025736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!114 &100580192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5921872069640025736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f21ef949adb929428db56165c53fa00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   selectedIcon: {fileID: 2022776166384371364}
 --- !u!1 &5954992323446725962
 GameObject:
@@ -231,7 +261,7 @@ GameObject:
   - component: {fileID: 5290767785790196163}
   - component: {fileID: 918914982409628305}
   - component: {fileID: 8981307172572600783}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

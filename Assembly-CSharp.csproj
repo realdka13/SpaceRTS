@@ -70,7 +70,8 @@
     <Compile Include="Assets\Scripts\Movement\LocationMarker.cs" />
     <Compile Include="Assets\Scripts\Movement\Movable.cs" />
     <Compile Include="Assets\Scripts\Movement\NavMeshManager.cs" />
-    <Compile Include="Assets\Scripts\Selection\Selectable.cs" />
+    <Compile Include="Assets\Scripts\Selection\SelectableBuilding.cs" />
+    <Compile Include="Assets\Scripts\Selection\SelectableUnit.cs" />
     <Compile Include="Assets\Scripts\Selection\SelectControls.cs" />
     <Compile Include="Assets\Scripts\Selection\SelectedIcon.cs" />
     <Compile Include="Assets\Scripts\UI\SelectorBox.cs" />

@@ -65,6 +65,7 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <Compile Include="Assets\Scripts\CameraControls.cs" />
+    <Compile Include="Assets\Scripts\Engineer.cs" />
     <Compile Include="Assets\Scripts\FormationGrid.cs" />
     <Compile Include="Assets\Scripts\LocationMarker.cs" />
     <Compile Include="Assets\Scripts\Movable.cs" />
@@ -73,6 +74,8 @@
     <Compile Include="Assets\Scripts\SelectControls.cs" />
     <Compile Include="Assets\Scripts\SelectedIcon.cs" />
     <Compile Include="Assets\Scripts\SelectorBox.cs" />
+    <Compile Include="Assets\Scripts\UnitStats.cs" />
+    <Compile Include="Assets\Scripts\UnitStatsManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity Projects/SpaceRTS/SpaceRTS/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

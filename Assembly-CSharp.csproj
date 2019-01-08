@@ -65,6 +65,7 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <Compile Include="Assets\Scripts\CameraControls.cs" />
+    <Compile Include="Assets\Scripts\FormationGrid.cs" />
     <Compile Include="Assets\Scripts\LocationMarker.cs" />
     <Compile Include="Assets\Scripts\Movable.cs" />
     <Compile Include="Assets\Scripts\NavMeshManager.cs" />

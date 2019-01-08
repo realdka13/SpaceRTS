@@ -28,12 +28,23 @@ public class SelectControls : MonoBehaviour
 
     //Location Marker
     public GameObject locationMarker;
+    public GameObject locationMarkerPrefab;
+
+    //Grid Prefab
+    [SerializeField]
+    private Grid formationGridPrefab;
+    private Grid currentGrid;
 
     private void Awake()
     {
         selectedObjects = new List<GameObject>();
         deSelectedObjects = new List<GameObject>();
         selectableObjs = new List<GameObject>();
+    }
+
+    private void Start()
+    {
+        MoveUnits(); //No movemnet is done as there are no selected objects, this is meant to spawm the location marker
     }
 
     private void Update()
@@ -172,14 +183,25 @@ public class SelectControls : MonoBehaviour
     private void MoveUnits()
     {
         //Draw Area Marker
+        if (locationMarker == null)
+        {
+            locationMarker = Instantiate(locationMarkerPrefab);
+        }
         if (selectedObjects.Count > 0)
         {
             locationMarker.GetComponent<LocationMarker>().SpawnMarker();
         }
 
+        //Spwn Grid
+        currentGrid = Instantiate(formationGridPrefab);
+        currentGrid.GetComponent<FormationGrid>().PositionGrid();
+
         foreach (GameObject sel in selectedObjects)
         {
-            sel.GetComponent<Movable>().ListenForMovementCommand();
+            sel.GetComponent<Movable>().MoveUnitToLocation(currentGrid);
         }
+
+        //Delete grid
+        Destroy(currentGrid.gameObject);
     }
 }

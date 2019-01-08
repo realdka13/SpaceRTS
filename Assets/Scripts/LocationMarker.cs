@@ -53,13 +53,15 @@ public class LocationMarker : MonoBehaviour
         }
 
         //Move Marker To correct Location
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity,clickableLayer);
-        gameObject.transform.position = hit.point;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, clickableLayer))
+        {
+            gameObject.transform.position = hit.point;
 
-        //Set Marker Active
-        gameObject.SetActive(true);
+            //Set Marker Active
+            gameObject.SetActive(true);
 
-        //Disable Marker After A few seconds
-        timerActive = true;
+            //Disable Marker After A few seconds
+            timerActive = true;
+        }
     }
 }

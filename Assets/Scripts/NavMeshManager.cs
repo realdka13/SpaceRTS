@@ -9,7 +9,7 @@ public class NavMeshManager : MonoBehaviour
     private NavMeshSurface surface;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         UpdateNavMesh();
     }

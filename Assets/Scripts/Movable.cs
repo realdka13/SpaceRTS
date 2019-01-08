@@ -5,21 +5,18 @@ using UnityEngine;
 
 public class Movable : MonoBehaviour
 {
+
+    private Vector3 targetLocation;
+
     [SerializeField]
     private NavMeshAgent agent;
 
     [SerializeField]
     private LayerMask clickableLayer;
 
-    public void ListenForMovementCommand()
+    public void MoveUnitToLocation(Grid grid)
     {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, clickableLayer))
-            {
-                agent.SetDestination(hit.point);
-            }
-            else
-            {
-                Debug.LogWarning("RayCast Failed");
-            }
+        targetLocation = grid.GetComponent<FormationGrid>().MoveToBasicSquareFormation();
+        agent.SetDestination(targetLocation);
     }
 }

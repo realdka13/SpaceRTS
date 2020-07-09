@@ -16,12 +16,18 @@ public class SelectControls : MonoBehaviour
     [HideInInspector]
     public List<GameObject> selectableObjs;
 
+    //List of buildings that are selectable
+    [SerializeField]
+    private GameObject selectedBuilding;
+
     //Vectors for Finding MousePositions
     private Vector3 mousePos1;
     private Vector3 mousePos2;
 
     [SerializeField]
-    private LayerMask clickableLayer;   //Layer to only have raycast hits
+    private LayerMask clickableLayerUnits;   //Layer to only have raycast hits
+    [SerializeField]
+    private LayerMask clickableLayerBuildings;
 
     //Kep Track if object is selected
     private bool objectSelected = false;
@@ -50,7 +56,7 @@ public class SelectControls : MonoBehaviour
     private void Update()
     {
         IfLeftClicked();    //Check if left click happened
-        ShouldClearSelection();
+        ShouldClearSelection(); //If deselect all button clicked
         if (Input.GetMouseButtonDown(1)) //If Right Clicked, move the units that are selected
         {
             MoveUnits();
@@ -87,7 +93,7 @@ public class SelectControls : MonoBehaviour
                 if (selectRect.Contains(Camera.main.WorldToViewportPoint(selectObject.transform.position), true))
                 {
                     selectedObjects.Add(selectObject);
-                    selectObject.GetComponent<Selectable>().OnSelected(); //Tell Them Theyve Been Selected
+                    selectObject.GetComponent<SelectableUnit>().OnSelected(); //Tell Them Theyve Been Selected
                 }
             }
             else //If Objct is null
@@ -111,50 +117,9 @@ public class SelectControls : MonoBehaviour
         {
             mousePos1 = Camera.main.ScreenToViewportPoint(Input.mousePosition); //Get first mouse position the moment the mouse button is pressed(for drag)
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit rayHit, Mathf.Infinity, clickableLayer)) //When Raycast hits something on correct layer
-            {
-                objectSelected = rayHit.collider.GetComponent<Selectable>().OnClicked();
-                if (Input.GetButton("Toggle Select"))   //If Toggle Key Pressed
-                {
-                    if (objectSelected) //And the object is being selected
-                    {
-                        //Add without anything special
-                        selectedObjects.Add(rayHit.collider.gameObject);
-                    }
-
-                    else if (!objectSelected) //And Object is being deselected
-                    {
-                        //Subjtract without anything special
-                        selectedObjects.Remove(rayHit.collider.gameObject);
-
-                        deSelectedObjects.Add(rayHit.collider.gameObject); //Add it to deselected Objects
-                    }
-                }
-                else if (objectSelected)
-                {
-                    if (selectedObjects.Count > 0)
-                    {
-                        //Add everything from list to deselected Objects
-                        deSelectedObjects = new List<GameObject>(selectedObjects);
-                        //Clear list currently
-                        selectedObjects.Clear();
-                    }
-
-                    //Add To List
-                    selectedObjects.Add(rayHit.collider.gameObject);
-                    deSelectedObjects.Remove(rayHit.collider.gameObject);//remove the just added object from deselectred objects
-
-                }
-                else if (!objectSelected)
-                {
-                    deSelectedObjects = new List<GameObject>(selectedObjects);
-
-                    //Clear list
-                    selectedObjects.Clear();
-                }
-            }
-
-            UpdateDeselections();
+            CheckIfUnitsSelected();
+            CheckIfBuildingsSelected();
+            UpdateDeselections(); //On Units
 
         }
         if (Input.GetMouseButtonUp(0)) //When Mouse button is released
@@ -169,12 +134,92 @@ public class SelectControls : MonoBehaviour
         objectSelected = false;
     }
 
+    private void CheckIfBuildingsSelected()
+    {
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit rayHit, Mathf.Infinity, clickableLayerBuildings)) //When Raycast hits something on correct layer
+        {
+            objectSelected = rayHit.collider.GetComponent<SelectableBuilding>().OnClicked();
+            if (objectSelected) //And the object is being selected
+            {
+                //Add to selected building
+                selectedBuilding = rayHit.collider.gameObject;
+
+                //Deselect Units
+                //Add everything from list to deselected Objects
+                deSelectedObjects = new List<GameObject>(selectedObjects);
+                //Clear list currently
+                selectedObjects.Clear();
+            }
+            else if (!objectSelected) //And Object is being deselected
+            {
+                //Remove from selected building
+                selectedBuilding.GetComponent<SelectableBuilding>().OnDeselect(); //Deselect if Raycast fails
+                selectedBuilding = null;
+            }
+        }
+        else
+        {
+            //remove if raycast fails
+            if (selectedBuilding)
+            {
+                selectedBuilding.GetComponent<SelectableBuilding>().OnDeselect(); //Deselect if Raycast fails
+                selectedBuilding = null;
+            }
+        }
+    }
+
+    private void CheckIfUnitsSelected()
+    {
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit rayHit, Mathf.Infinity, clickableLayerUnits)) //When Raycast hits something on correct layer
+        {
+            objectSelected = rayHit.collider.GetComponent<SelectableUnit>().OnClicked();
+            if (Input.GetButton("Toggle Select"))   //If Toggle Key Pressed
+            {
+                if (objectSelected) //And the object is being selected
+                {
+                    //Add without anything special
+                    selectedObjects.Add(rayHit.collider.gameObject);
+                }
+
+                else if (!objectSelected) //And Object is being deselected
+                {
+                    //Subjtract without anything special
+                    selectedObjects.Remove(rayHit.collider.gameObject);
+
+                    deSelectedObjects.Add(rayHit.collider.gameObject); //Add it to deselected Objects
+                }
+            }
+            else if (objectSelected)
+            {
+                if (selectedObjects.Count > 0)
+                {
+                    //Add everything from list to deselected Objects
+                    deSelectedObjects = new List<GameObject>(selectedObjects);
+                    //Clear list currently
+                    selectedObjects.Clear();
+                }
+
+                //Add To List
+                selectedObjects.Add(rayHit.collider.gameObject);
+                deSelectedObjects.Remove(rayHit.collider.gameObject);//remove the just added object from deselectred objects
+
+            }
+            else if (!objectSelected)
+            {
+                deSelectedObjects = new List<GameObject>(selectedObjects);
+
+                //Clear list
+                selectedObjects.Clear();
+            }
+        }
+    }
+
     private void UpdateDeselections() //Used to let the objects know theyve been deselected
     {
         //Let The Unselected Objects know they were unselected
         foreach (GameObject obj in deSelectedObjects)
         {
-            obj.GetComponent<Selectable>().OnDeselect();
+            obj.GetComponent<SelectableUnit>().OnDeselect();
         }
         deSelectedObjects.Clear();
     }

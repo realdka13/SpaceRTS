@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Selectable : MonoBehaviour
+public class SelectableUnit : MonoBehaviour
 {
     //If Object is Selected Bool
     private bool isSelected = false;

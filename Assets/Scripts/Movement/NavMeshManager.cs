@@ -17,7 +17,7 @@ public class NavMeshManager : MonoBehaviour
     public void UpdateNavMesh()
     {
         surface.BuildNavMesh();
-        print("Nav Mesh Updated");
+        Debug.Log("Nav Mesh Updated");
     }
 
 }
